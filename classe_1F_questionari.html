@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Classe 1F si racconta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #FEF6EC;
+    --orange: #E05C2B;
+    --orange-light: #F4936A;
+    --teal: #0D7377;
+    --teal-light: #14A098;
+    --yellow: #F2C94C;
+    --yellow-light: #FDE58A;
+    --rose: #D64E6A;
+    --dark: #1D2535;
+    --mid: #3D4B5C;
+    --light-text: #6B7A8E;
+    --card-bg: #ffffff;
+    --border: #E8DECE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--dark);
+    color: white;
+    padding: 70px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.25;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--teal);
+    opacity: 0.2;
+  }
+
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(38px, 7vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: var(--yellow); }
+
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 30px;
+  }
+
+  .hero-dates {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .hero-dot { color: var(--orange-light); font-size: 22px; line-height: 1; }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 30px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 16px 24px;
+  }
+
+  .hero-stat .num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--yellow);
+    line-height: 1;
+  }
+
+  .hero-stat .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--orange);
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--light-text);
+    line-height: 1.6;
+    margin-bottom: 36px;
+    max-width: 600px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ===== WORD CLOUD ===== */
+  .word-cloud-bg {
+    background: var(--dark);
+    padding: 60px 24px;
+  }
+
+  .word-cloud-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .word-cloud-inner .section-tag { color: var(--yellow); }
+  .word-cloud-inner .section-tag::before { background: var(--yellow); }
+  .word-cloud-inner h2 { color: white; }
+  .word-cloud-inner .subtitle { color: rgba(255,255,255,0.6); }
+
+  .word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .word {
+    border-radius: 8px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+
+  .word:hover { transform: scale(1.07); }
+  .word.xl { font-size: 48px; padding: 8px 16px; background: var(--orange); color: white; }
+  .word.lg { font-size: 34px; padding: 6px 14px; background: var(--teal); color: white; }
+  .word.md { font-size: 24px; padding: 5px 12px; background: rgba(255,255,255,0.12); color: white; }
+  .word.sm { font-size: 17px; padding: 4px 10px; background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.75); }
+
+  .word-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+
+  /* ===== COMPARISON BLOCKS ===== */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .compare-grid { grid-template-columns: 1fr; }
+  }
+
+  .compare-card {
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+
+  .compare-card.inizio { background: #FFF8F2; border-color: #F0D9C5; }
+  .compare-card.fine { background: #F2FAFB; border-color: #C5E2E4; }
+
+  .compare-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .compare-label.inizio { color: var(--orange); }
+  .compare-label.fine { color: var(--teal); }
+
+  .compare-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .compare-dot.inizio { background: var(--orange); }
+  .compare-dot.fine { background: var(--teal); }
+
+  /* ===== MATERIE CHART ===== */
+  .materie-section {
+    background: white;
+    padding: 60px 24px;
+  }
+
+  .materie-inner { max-width: 900px; margin: 0 auto; }
+
+  .materie-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--mid);
+  }
+
+  .tab-btn.active.migliori {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  .tab-btn.active.peggiori {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: white;
+  }
+
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+
+  .chart-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .chart-col {
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .chart-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .bar-item {
+    margin-bottom: 10px;
+  }
+
+  .bar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .bar-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .bar-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--light-text);
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 1px 7px;
+  }
+
+  .bar-track {
+    height: 8px;
+    background: #F0F0F0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .bar-fill.teal { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+  .bar-fill.rose { background: linear-gradient(90deg, var(--rose), #E97A93); }
+  .bar-fill.orange { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+
+  /* ===== STUDIO SECTION ===== */
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .strategy-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .strategy-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+
+  .strategy-icon {
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .strategy-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .strategy-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .strategy-mini-bar {
+    flex: 1;
+    height: 5px;
+    background: #F0F0F0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .strategy-mini-fill {
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .strategy-note {
+    font-size: 11px;
+    color: var(--light-text);
+    font-weight: 500;
+  }
+
+  .strategy-num {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* ===== AIUTI / DISTRAZIONI ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .bubble-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bubble-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mid);
+  }
+
+  .bubble-icon { flex-shrink: 0; font-size: 18px; margin-top: 1px; }
+
+  .ad-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .ad-label.aiuto { background: #E8F8F4; color: var(--teal); }
+  .ad-label.ostacolo { background: #FFF0F0; color: var(--rose); }
+
+  /* ===== SOGNI ===== */
+  .dreams-bg {
+    background: linear-gradient(135deg, #1D2535 0%, #0D3B4C 100%);
+    padding: 60px 24px;
+  }
+
+  .dreams-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .dreams-inner .section-tag { color: var(--yellow); }
+  .dreams-inner .section-tag::before { background: var(--yellow); }
+  .dreams-inner h2 { color: white; }
+  .dreams-inner .subtitle { color: rgba(255,255,255,0.6); }
+
+  .dreams-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .dream-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+
+  .dream-pill:hover { transform: scale(1.05); }
+  .dream-pill.l { font-size: 17px; padding: 12px 22px; }
+  .dream-pill.xl { font-size: 20px; padding: 14px 26px; font-family: 'Fraunces', serif; }
+
+  .dream-pill.orange { background: var(--orange); color: white; }
+  .dream-pill.teal { background: var(--teal); color: white; }
+  .dream-pill.yellow { background: var(--yellow); color: var(--dark); }
+  .dream-pill.rose { background: var(--rose); color: white; }
+  .dream-pill.muted { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+
+  /* ===== QUOTE CARDS ===== */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .quote-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s;
+  }
+
+  .quote-card:hover { transform: translateY(-3px); }
+
+  .quote-card::before {
+    content: '\201C';
+    font-family: 'Fraunces', serif;
+    font-size: 60px;
+    line-height: 1;
+    color: var(--orange-light);
+    opacity: 0.4;
+    position: absolute;
+    top: 10px;
+    left: 16px;
+  }
+
+  .quote-card p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--mid);
+    padding-top: 20px;
+  }
+
+  .quote-card p em {
+    font-style: italic;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .quote-meta {
+    font-size: 11px;
+    color: var(--light-text);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ===== CRESCITA ===== */
+  .crescita-bg {
+    background: white;
+    padding: 60px 24px;
+  }
+
+  .crescita-inner { max-width: 900px; margin: 0 auto; }
+
+  .growth-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .growth-row {
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+    .arrow-col { display: none; }
+  }
+
+  .growth-cell {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.5;
+    border: 1px solid var(--border);
+    color: var(--mid);
+  }
+
+  .growth-cell.before { border-left: 3px solid var(--orange); }
+  .growth-cell.after { border-left: 3px solid var(--teal); }
+
+  .arrow-col {
+    text-align: center;
+    font-size: 20px;
+    color: var(--light-text);
+  }
+
+  /* ===== GRUPPO ===== */
+  .gruppo-bg {
+    background: linear-gradient(180deg, #F2FAF8 0%, var(--cream) 100%);
+    padding: 60px 24px;
+  }
+
+  .gruppo-inner { max-width: 900px; margin: 0 auto; }
+
+  .gruppo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+  }
+
+  .gruppo-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .gruppo-card .g-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .gruppo-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .gruppo-card p {
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer-section {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 30px 24px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .footer-section span { color: var(--orange-light); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.6s ease forwards; }
+
+  .bar-fill { width: 0; }
+  .bars-animated .bar-fill { animation: none; }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner fade-up">
+    <div class="hero-tag">Tirocinio · Sostegno Scuola Media</div>
+    <h1>La Classe <span>1F</span><br>si racconta</h1>
+    <p>Due questionari, un anno scolastico. Voci, pensieri e trasformazioni di ragazze e ragazzi della scuola secondaria di primo grado, raccolti all'inizio e alla fine del tirocinio.</p>
+    <div class="hero-dates">
+      <span>Novembre 2024</span>
+      <span class="hero-dot">→</span>
+      <span>Aprile 2025</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WORD CLOUD ===== -->
+<section class="word-cloud-bg">
+  <div class="word-cloud-inner">
+    <div class="section-tag">Fine anno · A fine aprile</div>
+    <h2>L'anno in tre parole</h2>
+    <p class="subtitle">Abbiamo chiesto ai ragazzi di descrivere il loro anno scolastico in massimo tre parole. Ecco cosa hanno risposto.</p>
+
+    <div class="word-cloud">
+      <span class="word xl">divertente</span>
+      <span class="word lg">bello</span>
+      <span class="word lg">impegnativo</span>
+      <span class="word md">nuovo</span>
+      <span class="word md">interessante</span>
+      <span class="word sm">faticoso</span>
+      <span class="word sm">strano</span>
+      <span class="word sm">collaborativo</span>
+      <span class="word sm">amicizia</span>
+      <span class="word sm">veloce</span>
+      <span class="word sm">difficile</span>
+      <span class="word sm">studioso</span>
+      <span class="word sm">lunghissimo</span>
+    </div>
+
+    <p class="word-note">La dimensione delle parole è proporzionale al numero di volte che sono state usate dai ragazzi.</p>
+
+    <div class="compare-grid" style="margin-top: 40px;">
+      <div class="compare-card inizio">
+        <div class="compare-label inizio"><span class="compare-dot inizio"></span>Inizio anno · Novembre</div>
+        <p style="font-size:14px;line-height:1.7;color:var(--mid);">
+          All'inizio molti ragazzi descrivono l'avvio dell'anno come <strong>"bello"</strong> e <strong>"divertente"</strong>, ma anche con una punta di ansia o agitazione. Alcuni erano <em>curiosi</em>, altri <em>un po' emozionati</em> per i nuovi insegnanti e la nuova classe.
+        </p>
+      </div>
+      <div class="compare-card fine">
+        <div class="compare-label fine"><span class="compare-dot fine"></span>Fine anno · Aprile</div>
+        <p style="font-size:14px;line-height:1.7;color:var(--mid);">
+          A fine anno il tono cambia: l'anno è ancora <strong>"divertente"</strong> e <strong>"bello"</strong>, ma ora emerge anche <strong>"impegnativo"</strong> — segno di una consapevolezza cresciuta del percorso scolastico.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELAZIONI ===== -->
+<section class="section">
+  <div class="section-tag">Vita di classe</div>
+  <h2>Come mi trovo con i compagni?</h2>
+  <p class="subtitle">Una delle domande più significative riguardava le relazioni con i compagni di classe, sia a inizio che a fine anno.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card inizio">
+      <div class="compare-label inizio"><span class="compare-dot inizio"></span>Inizio anno</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">😊</span> La maggior parte si trova bene, ma le amicizie sono ancora in costruzione</div>
+        <div class="bubble-item"><span class="bubble-icon">🤝</span> Molti avevano amici già dalle elementari o dalla classe precedente</div>
+        <div class="bubble-item"><span class="bubble-icon">🌱</span> Alcune ragazze iniziano a stringere nuove amicizie all'interno della classe</div>
+      </div>
+    </div>
+    <div class="compare-card fine">
+      <div class="compare-label fine"><span class="compare-dot fine"></span>Fine anno</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">💚</span> Quasi tutti riferiscono di trovarsi bene, spesso con più amici di prima</div>
+        <div class="bubble-item"><span class="bubble-icon">🔄</span> Il cambio di posto ha favorito nuove amicizie inaspettate</div>
+        <div class="bubble-item"><span class="bubble-icon">🌟</span> Molti descrivono la classe come "più unita" rispetto a settembre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== MATERIE ===== -->
+<section class="materie-section">
+  <div class="materie-inner">
+    <div class="section-tag">Apprendimento</div>
+    <h2>Le materie preferite e le più difficili</h2>
+    <p class="subtitle">Abbiamo chiesto di elencare le tre materie in cui ci si sente più bravi e le tre più difficili. Ecco quante volte ogni materia è stata menzionata.</p>
+
+    <div class="materie-tabs">
+      <button class="tab-btn active migliori" onclick="switchTab('migliori')">⭐ Materie preferite</button>
+      <button class="tab-btn peggiori" onclick="switchTab('peggiori')">📉 Materie difficili</button>
+    </div>
+
+    <!-- MIGLIORI -->
+    <div class="chart-panel active" id="panel-migliori">
+      <div class="chart-row">
+        <div class="chart-col">
+          <div class="chart-col-label" style="color: var(--orange);">Inizio anno</div>
+
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Inglese</span><span class="bar-count">7</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="87.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Matematica</span><span class="bar-count">5</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="62.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Francese</span><span class="bar-count">5</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="62.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Scienze</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Tecnologia</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Ed. Fisica</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Italiano</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill orange" data-width="37.5"></div></div>
+          </div>
+        </div>
+
+        <div class="chart-col">
+          <div class="chart-col-label" style="color: var(--teal);">Fine anno</div>
+
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Matematica</span><span class="bar-count">9</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="90"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Tecnologia</span><span class="bar-count">5</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Musica</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="40"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Arte</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="40"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Francese</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="40"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Italiano</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="40"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Scienze</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill teal" data-width="30"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PEGGIORI -->
+    <div class="chart-panel" id="panel-peggiori">
+      <div class="chart-row">
+        <div class="chart-col">
+          <div class="chart-col-label" style="color: var(--orange);">Inizio anno</div>
+
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Storia</span><span class="bar-count">7</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="87.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Italiano / Gramm.</span><span class="bar-count">7</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="87.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Geografia</span><span class="bar-count">7</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="87.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Musica</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Matematica</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="37.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Scienze</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="37.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Inglese</span><span class="bar-count">2</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="25"></div></div>
+          </div>
+        </div>
+
+        <div class="chart-col">
+          <div class="chart-col-label" style="color: var(--teal);">Fine anno</div>
+
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Musica</span><span class="bar-count">5</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="62.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Geografia</span><span class="bar-count">5</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="62.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Storia</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Italiano / Gramm.</span><span class="bar-count">4</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="50"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Inglese</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="37.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Scienze</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="37.5"></div></div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-top"><span class="bar-name">Tecnologia</span><span class="bar-count">3</span></div>
+            <div class="bar-track"><div class="bar-fill rose" data-width="37.5"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== COME SI STUDIA ===== -->
+<section class="section">
+  <div class="section-tag">Metodi di studio</div>
+  <h2>Come si studia a casa</h2>
+  <p class="subtitle">Abbiamo chiesto ai ragazzi come organizzano lo studio pomeridiano. Le strategie più usate, confrontate tra inizio e fine anno.</p>
+
+  <div style="margin-bottom: 8px; font-size: 12px; font-weight: 700; color: var(--light-text); letter-spacing: 1px; text-transform: uppercase;">Inizio anno</div>
+  <div class="strategies-grid">
+    <div class="strategy-card">
+      <div class="strategy-icon">🗂️</div>
+      <div class="strategy-name">Schemi e mappe</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:75%; background:var(--orange);"></div></div>
+        <span class="strategy-num" style="color:var(--orange);">5</span>
+      </div>
+      <div class="strategy-note">ragazzi su 12</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-icon">🗣️</div>
+      <div class="strategy-name">Ripetere ad alta voce</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:50%; background:var(--orange);"></div></div>
+        <span class="strategy-num" style="color:var(--orange);">4</span>
+      </div>
+      <div class="strategy-note">ragazzi su 12</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-icon">🧑‍🤝‍🧑</div>
+      <div class="strategy-name">Aiuto da mamma / fratelli</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:40%; background:var(--orange);"></div></div>
+        <span class="strategy-num" style="color:var(--orange);">3</span>
+      </div>
+      <div class="strategy-note">ragazzi su 12</div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-icon">📖</div>
+      <div class="strategy-name">Leggere più volte</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:25%; background:var(--orange);"></div></div>
+        <span class="strategy-num" style="color:var(--orange);">2</span>
+      </div>
+      <div class="strategy-note">ragazzi su 12</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 30px; margin-bottom: 8px; font-size: 12px; font-weight: 700; color: var(--light-text); letter-spacing: 1px; text-transform: uppercase;">Fine anno · nuove strategie apprese</div>
+  <div class="strategies-grid">
+    <div class="strategy-card" style="border-color: var(--teal); border-top: 3px solid var(--teal);">
+      <div class="strategy-icon">🗂️</div>
+      <div class="strategy-name">Schemi (consolidato)</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:85%; background:var(--teal);"></div></div>
+        <span class="strategy-num" style="color:var(--teal);">7</span>
+      </div>
+      <div class="strategy-note">Ancora la strategia più diffusa</div>
+    </div>
+    <div class="strategy-card" style="border-color: var(--teal); border-top: 3px solid var(--teal);">
+      <div class="strategy-icon">🍅</div>
+      <div class="strategy-name">Metodo Pomodoro</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:15%; background:var(--teal);"></div></div>
+        <span class="strategy-num" style="color:var(--teal);">Nuova!</span>
+      </div>
+      <div class="strategy-note">30 min studio + 10 min pausa</div>
+    </div>
+    <div class="strategy-card" style="border-color: var(--teal); border-top: 3px solid var(--teal);">
+      <div class="strategy-icon">🤖</div>
+      <div class="strategy-name">Quiz con AI</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:12%; background:var(--teal);"></div></div>
+        <span class="strategy-num" style="color:var(--teal);">Nuova!</span>
+      </div>
+      <div class="strategy-note">Caricamento schemi su app AI per quiz</div>
+    </div>
+    <div class="strategy-card" style="border-color: var(--teal); border-top: 3px solid var(--teal);">
+      <div class="strategy-icon">📅</div>
+      <div class="strategy-name">Studiare ogni giorno un po'</div>
+      <div class="strategy-bar-wrap">
+        <div class="strategy-mini-bar"><div class="strategy-mini-fill" style="width:15%; background:var(--teal);"></div></div>
+        <span class="strategy-num" style="color:var(--teal);">Nuova!</span>
+      </div>
+      <div class="strategy-note">Appunti + studio distribuito</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== AIUTI E DISTRAZIONI ===== -->
+<section class="section">
+  <div class="section-tag">Attenzione in classe</div>
+  <h2>Cosa aiuta e cosa distrae</h2>
+  <p class="subtitle">Abbiamo chiesto cosa facilita l'apprendimento durante le spiegazioni e cosa invece lo ostacola. I temi ricorrenti sono stati molto costanti nel tempo.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="ad-label aiuto">✅ Cosa aiuta</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">🗺️</span>Schemi, mappe e immagini durante la spiegazione</div>
+        <div class="bubble-item"><span class="bubble-icon">💡</span>Spiegazioni con esempi concreti e coinvolgenti</div>
+        <div class="bubble-item"><span class="bubble-icon">📹</span>Video e slide proiettate alla LIM</div>
+        <div class="bubble-item"><span class="bubble-icon">💬</span>Insegnanti che si fermano, spiegano con calma e chiedono</div>
+        <div class="bubble-item"><span class="bubble-icon">🎯</span>La motivazione: "non voglio prendere un 4"</div>
+      </div>
+    </div>
+    <div>
+      <div class="ad-label ostacolo">⚠️ Cosa distrae</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">🔊</span>I compagni che parlano o ridono durante la lezione</div>
+        <div class="bubble-item"><span class="bubble-icon">😴</span>Noia quando il contenuto non è coinvolgente</div>
+        <div class="bubble-item"><span class="bubble-icon">🖊️</span>Giocare con il materiale (penne, pastelli, astucci)</div>
+        <div class="bubble-item"><span class="bubble-icon">😓</span>La stanchezza a fine mattinata</div>
+        <div class="bubble-item"><span class="bubble-icon">💭</span>I propri pensieri e la fantasia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOGNI ===== -->
+<section class="dreams-bg">
+  <div class="dreams-inner">
+    <div class="section-tag">Orientamento</div>
+    <h2>I sogni per il futuro</h2>
+    <p class="subtitle">Abbiamo chiesto ai ragazzi come si immaginano da adulti. Alcuni sogni si ripetono, altri sono originali e personali.</p>
+
+    <div class="dreams-grid">
+      <span class="dream-pill xl orange">✂️ Estetista</span>
+      <span class="dream-pill xl teal">⚽ Calciatore / Calciatrice</span>
+      <span class="dream-pill l yellow">🏥 Dottore / Dottoressa</span>
+      <span class="dream-pill l rose">💻 Informatico / Streamer</span>
+      <span class="dream-pill muted">🏠 Interior Designer</span>
+      <span class="dream-pill muted">👗 Stilista</span>
+      <span class="dream-pill muted">🏫 Maestra d'asilo</span>
+      <span class="dream-pill muted">💂 Guardia di Finanza</span>
+      <span class="dream-pill muted">✈️ Hostess</span>
+      <span class="dream-pill muted">🚗 Meccanico</span>
+    </div>
+
+    <p style="margin-top: 28px; font-size:13px; color: rgba(255,255,255,0.45); font-style:italic;">Le professioni più citate dalla classe, tra inizio e fine anno.</p>
+  </div>
+</section>
+
+<!-- ===== CRESCITA ===== -->
+<section class="crescita-bg">
+  <div class="crescita-inner">
+    <div class="section-tag">Domanda nuova · Fine anno</div>
+    <h2>Come mi sento ora?</h2>
+    <p class="subtitle">Solo nel questionario di fine anno abbiamo chiesto: <em>"Come ti senti oggi rispetto all'inizio dell'anno? È cambiato qualcosa dentro di te?"</em> Le risposte rivelano una bella crescita.</p>
+
+    <div style="margin-bottom: 20px;">
+      <div class="growth-row">
+        <div class="growth-cell before">All'inizio ero <em>un po' agitata</em> per le medie</div>
+        <div class="arrow-col">→</div>
+        <div class="growth-cell after"><strong>Avevo paura, ma poi non ho avuto più paura</strong> 😊</div>
+      </div>
+      <div class="growth-row">
+        <div class="growth-cell before">Non parlavo con tutti i compagni</div>
+        <div class="arrow-col">→</div>
+        <div class="growth-cell after"><strong>All'inizio non parlavo a tutti, invece ora sì</strong> — mi trovo bene con quasi tutti</div>
+      </div>
+      <div class="growth-row">
+        <div class="growth-cell before">Non sapevo ancora come studiare bene</div>
+        <div class="arrow-col">→</div>
+        <div class="growth-cell after"><strong>Ho capito che devo studiare. MOLTO.</strong> 📚</div>
+      </div>
+      <div class="growth-row">
+        <div class="growth-cell before">Mi sembravano antipatici</div>
+        <div class="arrow-col">→</div>
+        <div class="growth-cell after"><strong>Voglio molto bene ai miei compagni</strong>, ora mi sembrano gentili</div>
+      </div>
+      <div class="growth-row">
+        <div class="growth-cell before">Non mi sentivo sicura di me</div>
+        <div class="arrow-col">→</div>
+        <div class="growth-cell after"><strong>Mi sento più sicura di me e più brava</strong> 💪</div>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #e8f8f5, #f2f9ea); border-radius: 16px; padding: 24px; border: 1px solid #c5e4dc; margin-top: 10px;">
+      <div style="font-size: 12px; font-weight: 700; letter-spacing: 1px; color: var(--teal); text-transform: uppercase; margin-bottom: 12px;">💬 Alcune risposte particolarmente significativa</div>
+      <p style="font-size: 15px; line-height: 1.8; color: var(--mid);">
+        <em>"Mi sento più pronta per il prossimo anno e ho imparato tante cose che mi serviranno nella vita e anche a scuola per studiare meglio."</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CLASSE CAMBIATA ===== -->
+<section class="section">
+  <div class="section-tag">Riflessione collettiva · Fine anno</div>
+  <h2>Cosa è cambiato in classe?</h2>
+  <p class="subtitle">Abbiamo chiesto ai ragazzi cosa secondo loro è migliorato nella classe rispetto a settembre, e cosa si potrebbe ancora migliorare.</p>
+
+  <div class="compare-grid">
+    <div class="compare-card fine">
+      <div class="compare-label fine"><span class="compare-dot fine"></span>Cosa è migliorato</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">✋</span>Alzano la mano per chiedere permesso (bagno, buttare la carta)</div>
+        <div class="bubble-item"><span class="bubble-icon">❤️</span>Il legame tra compagni si è rafforzato</div>
+        <div class="bubble-item"><span class="bubble-icon">📚</span>Sanno di più — la conoscenza è cresciuta</div>
+        <div class="bubble-item"><span class="bubble-icon">🤝</span>"Siamo la miglior classe, dicono tutti"</div>
+      </div>
+    </div>
+    <div class="compare-card inizio">
+      <div class="compare-label inizio"><span class="compare-dot inizio"></span>Cosa si può ancora migliorare</div>
+      <div class="bubble-list">
+        <div class="bubble-item"><span class="bubble-icon">🔇</span>Le chiacchiere durante le lezioni</div>
+        <div class="bubble-item"><span class="bubble-icon">👂</span>L'attenzione durante alcune materie</div>
+        <div class="bubble-item"><span class="bubble-icon">💬</span>I modi di parlare (toni e parole usate tra compagni)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAVORO DI GRUPPO ===== -->
+<section class="gruppo-bg">
+  <div class="gruppo-inner">
+    <div class="section-tag">Competenze trasversali · Fine anno</div>
+    <h2>Lavorare bene in gruppo</h2>
+    <p class="subtitle">Abbiamo chiesto di spiegare a un compagno immaginario cosa significa <em>"lavorare bene in gruppo"</em>. Sono emersi alcuni valori chiave.</p>
+
+    <div class="gruppo-cards">
+      <div class="gruppo-card">
+        <div class="g-icon">👂</div>
+        <h3>Ascoltare tutti</h3>
+        <p>Raccogliere le idee di ognuno prima di decidere insieme la soluzione migliore.</p>
+      </div>
+      <div class="gruppo-card">
+        <div class="g-icon">⚖️</div>
+        <h3>Dividere il lavoro</h3>
+        <p>Assegnare ruoli precisi e rispettarli, così il lavoro non finisce solo su qualcuno.</p>
+      </div>
+      <div class="gruppo-card">
+        <div class="g-icon">🤝</div>
+        <h3>Rispettarsi</h3>
+        <p>Non essere aggressivi, aiutarsi a vicenda con pazienza e rispetto reciproco.</p>
+      </div>
+      <div class="gruppo-card">
+        <div class="g-icon">🎯</div>
+        <h3>Prendere responsabilità</h3>
+        <p>Se hai sbagliato, ammettilo. Il lavoro sbagliato influenza tutto il gruppo, non solo te.</p>
+      </div>
+      <div class="gruppo-card">
+        <div class="g-icon">🍰</div>
+        <h3>Siamo ingredienti di una torta</h3>
+        <p><em>"Se uno manca, la torta viene male."</em> — Risposta originale e bella di una studentessa.</p>
+      </div>
+      <div class="gruppo-card">
+        <div class="g-icon">🗓️</div>
+        <h3>Mantenere le promesse</h3>
+        <p>Il gruppo funziona quando ognuno fa la sua parte entro i tempi stabiliti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTES FINALI ===== -->
+<section class="section">
+  <div class="section-tag">Voci dalla classe</div>
+  <h2>Citazioni che restano</h2>
+  <p class="subtitle">Alcune risposte ci hanno colpito particolarmente per profondità, originalità o spontaneità.</p>
+
+  <div class="quotes-grid">
+    <div class="quote-card">
+      <p>La voglia di <em>non prendere 4</em> alla verifica è la cosa che mi aiuta di più a stare attento.</p>
+      <div class="quote-meta">Studente — Inizio anno</div>
+    </div>
+    <div class="quote-card">
+      <p>NON STUDIARE PER TANTE ORE DI FILA! Studiare trenta minuti e fare una pausa di 5 minuti! Per il cervello è <em>troppa roba da ricordare.</em></p>
+      <div class="quote-meta">Studente — Fine anno</div>
+    </div>
+    <div class="quote-card">
+      <p>I compagni sono gli ingredienti e, <em>se uno non c'è, esce male la torta.</em></p>
+      <div class="quote-meta">Studentessa — Fine anno · Sul lavoro di gruppo</div>
+    </div>
+    <div class="quote-card">
+      <p>Carico lo schema su un'app AI e gli chiedo di farmi un quiz. Così capisco <em>se ho davvero imparato</em> l'argomento.</p>
+      <div class="quote-meta">Studentessa — Fine anno · Strategia di studio</div>
+    </div>
+    <div class="quote-card">
+      <p>Ho imparato che ogni tanto <em>anche i prof hanno bisogno di divertirsi</em> un po'.</p>
+      <div class="quote-meta">Studente — Fine anno</div>
+    </div>
+    <div class="quote-card">
+      <p>Mi sento <em>più pronta per il prossimo anno</em> e ho imparato tante cose che mi serviranno nella vita.</p>
+      <div class="quote-meta">Studentessa — Fine anno · Come mi sento oggi</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer-section">
+  <p>Questionario somministrato nell'ambito del <span>tirocinio specializzazione per il sostegno</span> · Scuola Secondaria di Primo Grado</p>
+  <p style="margin-top: 6px;">Novembre 2024 — Aprile 2025 · Classe 1F</p>
+</div>
+
+<script>
+  // Tab switching
+  function switchTab(tab) {
+    document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'migliori', 'peggiori'));
+    document.getElementById('panel-' + tab).classList.add('active');
+    const btn = [...document.querySelectorAll('.tab-btn')].find(b => b.textContent.includes(tab === 'migliori' ? 'preferite' : 'difficili'));
+    btn.classList.add('active', tab === 'migliori' ? 'migliori' : 'peggiori');
+    animateBars();
+  }
+
+  // Animate bars on scroll
+  function animateBars() {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const w = bar.getAttribute('data-width');
+      if (w) {
+        bar.style.width = '0';
+        requestAnimationFrame(() => {
+          setTimeout(() => { bar.style.width = w + '%'; }, 50);
+        });
+      }
+    });
+  }
+
+  // Intersection Observer for bar animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateBars();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+
+  const matSection = document.querySelector('.materie-section');
+  if (matSection) observer.observe(matSection);
+</script>
+</body>
+</html>
